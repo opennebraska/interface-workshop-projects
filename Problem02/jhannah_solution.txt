@@ -1,0 +1,77 @@
+perl cleanse_csv.pl | grep 'governor:signed' | cut -d\| -f 6 | sort | uniq -c | sort -rn
+  32 Krist
+  28 Avery
+  27 Schilz
+  27 Hadley
+  27 Fischer
+  27 Executive Board: Wightman, Chairperson
+  25 Karpisek
+  25 Cornett
+  24 Lautenbaugh
+  24 Christensen
+  23 Nordquist
+  22 Gloor
+  21 Wightman
+  21 Pahls
+  21 McGill
+  21 McCoy
+  21 Lathrop
+  21 Harr
+  20 Dubas
+  19 Mello
+  19 Coash
+  18 Schumacher
+  17 Langemeier
+  17 Howard
+  17 Campbell
+  16 Carlson
+  14 Pirsch
+  14 Conrad
+  12 Smith
+  11 Brasch
+  11 Ashford
+  10 Sullivan
+  10 Larson
+  10 Harms
+  10 Cook
+   9 Adams
+   8 Wallman
+   8 Janssen
+   8 Heidemann
+   8 Davis
+   8 Bolz
+   7 Utter
+   7 Louden
+   7 Kintner
+   7 Haar
+   7 Crawford
+   6 Watermeier
+   6 Redistricting Committee
+   6 Price
+   6 Fulton
+   6 Flood
+   6 Bloomfield
+   5 Speaker Flood
+   5 Hansen
+   4 Urban Affairs Committee
+   4 Scheer
+   4 Murante
+   4 Lambert
+   4 Kolowski
+   4 Council
+   4 Chambers
+   3 Seiler
+   3 Legislative Performance Audit Committee
+   3 Johnson
+   3 Education Committee
+   3 Business and Labor Committee
+   2 Transportation and Telecommunications Committee
+   2 Speaker Adams
+   2 Nelson
+   2 Health and Human Services Committee
+   1 Revenue Committee
+   1 Nebraska Retirement Systems Committee
+   1 Natural Resources Committee
+   1 Garrett
+   1 Agriculture Committee
+
