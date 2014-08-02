@@ -1,34 +1,28 @@
 use Modern::Perl;
-use Text::CSV;
 
-my $file = "nadc_data-master/formb1.txt";
-
-my $total;
-my $csv = Text::CSV->new ( { binary => 1 } )  # should set binary attribute.
-  or die "Cannot use CSV: ".Text::CSV->error_diag ();
-open my $fh, "<:encoding(utf8)", $file or die "$file: $!";
-while ( my $row = $csv->getline( $fh ) ) {
-  s/[\r\n]//g for @$row;
-  s/[^ -~]//g for @$row;
-  s/  +/ /g for @$row;
-  my @row = @$row;
-
-  # OK, we finally have "clean" data to work with now...
-  
-  my $date = $row[9];     # "Date received"
+my %totals;
+open my $in, "<", "nadc_data-master/formb1.txt";
+while (<$in>) {
+  chomp;
+  my @row = split /\|/;
+  my $who =    $row[0];   # "Committee Name"
+  my $date =   $row[9];   # "Date received"
   my $amount = $row[46];  # "Field 20" - "Cash receipts this period"
-  #next unless ($who =~ /conagra/i);
+  # next unless ($who =~ /conagra/i);
   # next unless ($date =~ /2011/);
-next unless ($amount);
-  $total += $amount;
-  say $amount;
-
-#  say join "|", @row;
+  $totals{$who} += $amount if $amount;
 }
-$csv->eof or $csv->error_diag();
-close $fh;
 
-say "Total: $total";
+foreach my $who ( reverse sort by_total keys %totals) {
+  my $amount = sprintf("%.2f", $totals{$who});
+  printf "%10s - %s\n", $amount, $who;
+}
+
+sub by_total {
+  $totals{$a} <=> $totals{$b}
+}
+
+
 
 
 
